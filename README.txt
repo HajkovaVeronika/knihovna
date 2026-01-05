@@ -1,2 +1,2 @@
 # Můj projekt
-tohle je můj projekt
+tohle je můj závěrečný projekt
