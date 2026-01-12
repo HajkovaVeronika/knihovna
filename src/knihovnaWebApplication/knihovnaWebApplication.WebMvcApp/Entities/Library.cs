@@ -6,7 +6,15 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
     [Table("libraries")]
     public class Library
     {
+        public Library()
+        {
+        }
 
+        public Library(int libraryId, string name)
+        {
+            LibraryId = libraryId;
+            Name = name;
+        }
 
         [Key]
         [Column("libraryId")]
