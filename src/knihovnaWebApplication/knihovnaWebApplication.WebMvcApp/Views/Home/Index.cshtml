@@ -1,8 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Library>;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<head>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+
+
+<div class="myContainer">
+    <h2>Branches</h2>
+
+    @foreach (var branch in Model) {
+    <div class="branchContainer">
+        <div class="branch">
+            <p>@branch.Name</p>
+            <div class="myBtns">
+                <div class="btnRename myBtn">Rename</div>
+                <div class="btnDetail myBtn">Detail</div>
+            </div>
+        </div>
+    </div>
+    }
+
 </div>

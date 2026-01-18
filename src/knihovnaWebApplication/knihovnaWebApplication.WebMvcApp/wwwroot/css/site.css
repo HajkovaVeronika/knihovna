@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -28,4 +28,34 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+*/
+header {
+    background-color: #373737;
+    color: white;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+header h2 {
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+header p:hover {
+    cursor: default;
+    text-decoration: underline;
+}
+
+header p {
+    align-self: flex-end;
+    margin-top: 0px;
+    margin-bottom: 5px;
 }
