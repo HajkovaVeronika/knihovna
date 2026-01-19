@@ -1,0 +1,66 @@
+﻿@model BranchDetailModel;
+
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding: 50px;
+        background-color: #E4ECEF;
+        height: 100vh;
+    }
+
+    .bookContainer {
+        display: flex;
+        flex-direction: column;
+        background-color: #C8DDF1;
+        padding: 25px;
+        border-radius: 25px;
+        flex: 1;
+    }
+
+    .booksContainer {
+        display: flex;
+        flex-direction: row;        
+        padding: 30px;
+        gap: 30px;
+        justify-content: space-evenly;
+    }
+
+    .topLink {
+        cursor: default;
+        text-decoration: underline;
+        color: black;
+    }
+
+    .branchesLink {
+        cursor: pointer;
+        text-decoration: underline;
+        color: black;
+    }
+
+    .branchesLink:hover {
+    }
+</style>
+
+<main>
+    <p class="topLink"> <a class="branchesLink">Branches</a> > @Model.BranchName</p>
+
+    <div class="booksContainer">
+        @foreach (Book book in @Model.BooksInBranch)
+        {
+            <div class="bookContainer">
+                <p>title: @book.Title</p>
+                <p>author: @book.Author</p>
+            </div>
+        }
+    </div>
+</main>
+
+
+
+

@@ -1,8 +1,9 @@
-using System.Diagnostics;
 using knihovnaWebApplication.WebMvcApp.Data;
 using knihovnaWebApplication.WebMvcApp.Entities;
 using knihovnaWebApplication.WebMvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace knihovnaWebApplication.WebMvcApp.Controllers
 {
@@ -10,19 +11,23 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
     {
         public LibrariesDbContext DbContext { get; set; }
         public List<Library> Libraries { get; set; }
-        public List<Book> Books { get; set; }
         public List<User> Users { get; set; }
         public LibrariesController()
         {
             DbContext = new LibrariesDbContext();
             Libraries = DbContext.Libraries.ToList();
-            Books = DbContext.Books.ToList();
             Users = DbContext.Users.ToList();
         }
 
-        public IActionResult List()
+        public ActionResult BranchDetail(int id)
         {
-            return View(Libraries);
+
+            string branchName = Libraries.First(l => l.LibraryId == id).Name;
+            List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
+
+            BranchDetailModel booksBranch = new BranchDetailModel(branchName, books);
+
+            return View(booksBranch);
         }
     }
 }

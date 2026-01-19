@@ -1,4 +1,4 @@
-
+/*
 body {
     font-family: Inter;
 }
@@ -30,6 +30,7 @@ body {
 .branch {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: rgba(1, 120, 255, 0.12);
     padding: 20px;
     width: 100%;
@@ -58,9 +59,11 @@ body {
     align-items: center;
     height: 50px;
     border: 3px solid transparent;
+    text-decoration: none;
 }
 
 .myBtn:hover {
     cursor: pointer;
     border: 3px solid #FFC9C9;
 }
+*/

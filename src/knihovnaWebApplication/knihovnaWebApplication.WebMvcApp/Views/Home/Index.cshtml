@@ -3,9 +3,6 @@
 }
 @model List<Library>;
 
-<head>
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
-</head>
 
 
 <div class="myContainer">
@@ -14,13 +11,13 @@
     @foreach (var branch in Model) {
     <div class="branchContainer">
         <div class="branch">
-            <p>@branch.Name</p>
-            <div class="myBtns">
-                <div class="btnRename myBtn">Rename</div>
-                <div class="btnDetail myBtn">Detail</div>
+                <p>Best Library s.r.o. - @branch.Name</p>
+                <div class="myBtns">
+                    <a asp-controller="Libraries" asp-action="BranchDetail" asp-route-id="@branch.LibraryId" class="btnDetail myBtn">Detail</a>
+                    <a class="btnRename myBtn">Rename</a>
             </div>
         </div>
     </div>
     }
 
-</div>
+</div> 
