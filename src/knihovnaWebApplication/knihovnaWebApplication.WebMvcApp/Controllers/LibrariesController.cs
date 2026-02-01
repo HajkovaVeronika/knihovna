@@ -29,5 +29,15 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
             return View(booksBranch);
         }
+
+        public ActionResult Login()
+        {
+            return View(Users);
+        }
+
+        public ActionResult Signup()
+        {
+            return View(Users);
+        }
     }
 }

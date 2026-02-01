@@ -17,7 +17,6 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            //testuju commit
             _logger = logger;
             DbContext = new LibrariesDbContext();
             Libraries = DbContext.Libraries.ToList();

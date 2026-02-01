@@ -49,15 +49,17 @@ header h2 {
     font-size: 30px;
 }
 
-header p:hover {
+header a:hover {
     cursor: default;
     text-decoration: underline;
 }
 
-header p {
+header a {
     align-self: flex-end;
     margin-top: 0px;
     margin-bottom: 5px;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -122,6 +124,7 @@ body {
     height: 50px;
     border: 3px solid transparent;
     text-decoration: none;
+    width: fit-content;
 }
 
     .myBtn:hover {

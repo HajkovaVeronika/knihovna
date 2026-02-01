@@ -1,0 +1,59 @@
+﻿@model List<User>;
+
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    
+    .loginContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    input {
+        width: fit-content;
+        border-radius: 20px;
+        border: solid #9FC4E6 2px;
+        padding: 7px;
+    }
+
+    .loginH3 {
+        transform: translateX(-118px);
+    }
+
+    .createAccountContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+</style>
+
+<div class="myContainer">
+    <div class="loginContainer">
+        <h3 class="loginH3">Create account</h3>
+        <div class="inputs">
+            <input type="text" name="name" value="" placeholder="username" />
+            <input type="password" name="password" value="" placeholder="password" />
+            <input type="password" name="password" value="" placeholder="confirm password" />
+            <button class="myBtn">Create account</button>
+        </div>
+        <div class="createAccountContainer">
+            <p>Already have an account?</p>
+            <a class="myBtn" asp-controller="Libraries" asp-action="Login">Login</a>
+        </div>
+    </div>
+    
+</div>
+
+
