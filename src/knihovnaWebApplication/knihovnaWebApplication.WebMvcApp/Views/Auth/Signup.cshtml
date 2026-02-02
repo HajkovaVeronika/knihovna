@@ -1,0 +1,24 @@
+﻿@model List<User>;
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="myContainer">
+    <div class="loginContainer">
+        <h3 class="loginH3">Create account</h3>
+        <div class="inputs">
+            <input type="text" name="name" value="" placeholder="username" />
+            <input type="password" name="password" value="" placeholder="password" />
+            <input type="password" name="password" value="" placeholder="confirm password" />
+            <button class="myBtn">Create account</button>
+        </div>
+        <div class="createAccountContainer">
+            <p>Already have an account?</p>
+            <a class="myBtn" asp-controller="Auth" asp-action="Login">Login</a>
+        </div>
+    </div>
+    
+</div>
+
+

@@ -1,12 +1,14 @@
 using knihovnaWebApplication.WebMvcApp.Data;
 using knihovnaWebApplication.WebMvcApp.Entities;
 using knihovnaWebApplication.WebMvcApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace knihovnaWebApplication.WebMvcApp.Controllers
 {
+    //[Authorize] //zabespeèí se celej controller a jeho akce
     public class LibrariesController : Controller
     {
         public LibrariesDbContext DbContext { get; set; }
@@ -19,6 +21,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             Users = DbContext.Users.ToList();
         }
 
+        [Authorize] //zabezpeèí jenom konkrétní akci
         public ActionResult BranchDetail(int id)
         {
 
@@ -28,16 +31,6 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             BranchDetailModel booksBranch = new BranchDetailModel(branchName, books);
 
             return View(booksBranch);
-        }
-
-        public ActionResult Login()
-        {
-            return View(Users);
-        }
-
-        public ActionResult Signup()
-        {
-            return View(Users);
         }
     }
 }

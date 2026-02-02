@@ -1,0 +1,26 @@
+﻿@model LoginViewModel;
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="myContainer">
+    <div class="loginPageContainer">
+        <form class="loginContainer" method="post">
+            <h3 class="loginH3">Log in</h3>
+            <div class="inputs">
+                <input type="text" asp-for="Username" placeholder="username" />
+                <input type="password" asp-for="Password" value="" placeholder="password" />
+                <button class="myBtn">Log in</button>
+            </div>
+            <div class="createAccountContainer">
+                <p>Don't have an account?</p>
+                <a class="myBtn" asp-controller="Auth" asp-action="Signup">Create account</a>
+            </div>
+        </form>
+        
+    </div>
+    
+</div>
+
+

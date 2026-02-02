@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace knihovnaWebApplication.WebMvcApp
 {
     public class Program
@@ -8,6 +10,19 @@ namespace knihovnaWebApplication.WebMvcApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // 1. èást -> konfigování pøihlašování pomocí cookies!!!!
+            builder.Services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.LoginPath = "/Auth/Login";
+                    //options.LogoutPath = "/Auth/Logout";
+                    //options.AccessDeniedPath = "/Auth/Denied";
+
+                    options.Cookie.HttpOnly = true; //dùležitý -> cookie se nedá èíst v js
+                    options.Cookie.SameSite = SameSiteMode.Lax; //cookie funguje jenom ve stejný stránce, v rámci domény (?)
+                });
+
 
             var app = builder.Build();
 
@@ -22,7 +37,9 @@ namespace knihovnaWebApplication.WebMvcApp
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseAuthorization();
+            //2. èást - zapnutí autentizace - dùležité poøadí
+            app.UseAuthentication();    //kdo jsme?, tímhle to "zapnu", zkontroluje jestli jsem pøihlášená a zkontroluje jestli jsou nìjaký parametry pro pøihlášení 
+            app.UseAuthorization();     //èím jsme? (jaké role?)
 
             app.MapStaticAssets();
             app.MapControllerRoute(

@@ -10,10 +10,10 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         {
         }
 
-        public User(int userId, string userName, string password)
+        public User(int userId, string username, string password)
         {
             UserId = userId;
-            UserName = userName;
+            Username = username;
             Password = password;
         }
 
@@ -21,7 +21,7 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         [Column("userId")]
         public int UserId { get; set; }
         [Column("userName")]
-        public string UserName { get; set; }
+        public string Username { get; set; }
         [Column("password")]
         public string Password { get; set; }
     }
