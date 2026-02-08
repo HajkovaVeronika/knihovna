@@ -45,5 +45,7 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         public Boolean Available { get; set; }
         [Column("timesLent")]
         public int TimesLent { get; set; }
+        [Column("coverImg")]
+        public string CoverImg { get; set; }
     }
 }

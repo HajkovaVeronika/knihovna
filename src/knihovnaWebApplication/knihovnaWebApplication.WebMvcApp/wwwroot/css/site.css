@@ -123,6 +123,10 @@ body {
     gap: 20px;
 }
 
+.myA {
+    text-decoration: none;
+}
+
 .myBtn {
     display: flex;
     background-color: #FF7676;
@@ -172,4 +176,55 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.bookContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #C8DDF1;
+    padding: 40px;
+    padding-bottom: 25px;
+    border-radius: 30px;
+    width: 350px;
+    align-items: center;
+    gap: 15px;
+}
+
+.booksContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+    gap: 50px;
+    justify-content: center;
+}
+
+.branchBookTitle {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0px;
+}
+
+.branchBookAuthor {
+    margin-bottom: 0px;
+}
+
+.topLink {
+    font-size:xx-large;
+    cursor: default;
+    color: black;
+}
+
+.branchesLink {
+    color: black;
+    text-decoration: none;
+}
+
+.branchesLink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.coverImgBranch {
+    width: 250px;
+    border-radius: 10px;
 }

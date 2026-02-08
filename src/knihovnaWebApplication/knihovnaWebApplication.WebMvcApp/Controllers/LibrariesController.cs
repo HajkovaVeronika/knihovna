@@ -14,14 +14,16 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         public LibrariesDbContext DbContext { get; set; }
         public List<Library> Libraries { get; set; }
         public List<User> Users { get; set; }
+        public List<Book> Books { get; set; }
         public LibrariesController()
         {
             DbContext = new LibrariesDbContext();
             Libraries = DbContext.Libraries.ToList();
             Users = DbContext.Users.ToList();
+            Books = DbContext.Books.ToList();
         }
 
-        [Authorize] //zabezpeèí jenom konkrétní akci
+        //[Authorize] //zabezpeèí jenom konkrétní akci
         public ActionResult BranchDetail(int id)
         {
 
@@ -31,6 +33,13 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             BranchDetailModel booksBranch = new BranchDetailModel(branchName, books);
 
             return View(booksBranch);
+        }
+        [Authorize]
+        public ActionResult BookDetail(int bookId)
+        {
+            Book book = Books.First(b => b.BookId == bookId);
+            return View(book);
+
         }
     }
 }
