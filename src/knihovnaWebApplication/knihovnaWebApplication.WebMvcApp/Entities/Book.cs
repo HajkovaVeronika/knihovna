@@ -10,7 +10,7 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         {
         }
 
-        public Book(int bookId, string title, string author, string genre, int pages, DateTime publishDate, decimal rating, int libraryId, bool available, int timesLent)
+        public Book(int bookId, string title, string author, string genre, int pages, DateTime publishDate, decimal rating, int libraryId, bool available, int timesLent, string coverImg)
         {
             BookId = bookId;
             Title = title;
@@ -22,6 +22,7 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
             LibraryId = libraryId;
             Available = available;
             TimesLent = timesLent;
+            CoverImg = coverImg;
         }
 
         [Key]

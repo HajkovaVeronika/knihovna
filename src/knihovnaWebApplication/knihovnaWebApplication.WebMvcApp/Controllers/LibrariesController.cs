@@ -24,22 +24,53 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         }
 
         //[Authorize] //zabezpeèí jenom konkrétní akci
-        public ActionResult BranchDetail(int id)
+        public IActionResult BranchDetail(int id)
         {
 
             string branchName = Libraries.First(l => l.LibraryId == id).Name;
             List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
 
-            BranchDetailModel booksBranch = new BranchDetailModel(branchName, books);
+            BranchDetailModel booksBranch = new BranchDetailModel(id,branchName, books);
 
             return View(booksBranch);
         }
         [Authorize]
-        public ActionResult BookDetail(int bookId)
+        public IActionResult BookDetail(int bookId)
         {
             Book book = Books.First(b => b.BookId == bookId);
             return View(book);
 
+        }
+
+        public IActionResult AddBook(int branchId)
+        {
+            Book book = new Book();
+            book.LibraryId = branchId;
+
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult AddingBook(Book model) {
+
+            Book book = model;
+            book.Available = true;
+            book.TimesLent = 0;
+            DbContext.Books.Add(book);
+            DbContext.SaveChanges();    //hazí chybu idk
+
+
+            return RedirectToAction("BookAdded"); //todo: musí vrátit i branchId jako model
+        }
+
+        public IActionResult BookAdded(int id)
+        {
+            string branchName = Libraries.First(l => l.LibraryId == id).Name;
+            List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
+
+            BranchDetailModel booksBranch = new BranchDetailModel(id, branchName, books);
+
+            return View("BranchDetail", booksBranch);
         }
     }
 }

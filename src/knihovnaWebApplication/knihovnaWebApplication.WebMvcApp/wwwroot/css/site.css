@@ -89,9 +89,9 @@ body {
     height: 100vh;
 }
 
-    .myContainer h2 {
-        font-size: 40px;
-    }
+.myContainer h2 {
+     font-size: 40px;
+}
 
 .branchContainer {
     display: flex;
@@ -114,9 +114,9 @@ body {
     font-size: 20px;
 }
 
-    .branch p {
-        margin: 15px;
-    }
+.branch p {
+    margin: 15px;
+}
 
 .myBtns {
     display: flex;
@@ -142,10 +142,10 @@ body {
     width: fit-content;
 }
 
-    .myBtn:hover {
-        cursor: pointer;
-        border: 3px solid #FFC9C9;
-    }
+.myBtn:hover {
+    cursor: pointer;
+    border: 3px solid #FFC9C9;
+}
 
 .loginContainer {
     display: flex;
@@ -220,7 +220,7 @@ input {
 }
 
 .branchesLink:hover {
-    cursor: pointer;
+    cursor: default;
     text-decoration: underline;
 }
 

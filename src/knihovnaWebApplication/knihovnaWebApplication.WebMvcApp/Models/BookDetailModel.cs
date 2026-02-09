@@ -2,17 +2,17 @@ using knihovnaWebApplication.WebMvcApp.Entities;
 
 namespace knihovnaWebApplication.WebMvcApp.Models
 {
-    public class BranchDetailModel
+    public class BookDetailModel
     {
         public int BranchId { get; set; }
         public string BranchName { get; set; }
-        public List<Book> BooksInBranch { get; set; }
+        public Book Book { get; set; }
 
-        public BranchDetailModel(int branchId, string branchName, List<Book> booksInBranch)
+        public BookDetailModel(int branchId, string branchName, Book book)
         {
             BranchId = branchId;
             BranchName = branchName;
-            BooksInBranch = booksInBranch;
+            Book = book;
         }
     }
 }
