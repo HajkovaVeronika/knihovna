@@ -10,18 +10,19 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         {
         }
 
-        public Book(int bookId, string title, string author, string genre, int pages, DateTime publishDate, decimal rating, int libraryId, bool available, int timesLent, string coverImg)
+        public Book(int bookId, string title, string author, string genre, int pages, DateTime publishDate, decimal rating, int libraryId, bool available, int timesLent, string description, string coverImg)
         {
             BookId = bookId;
             Title = title;
             Author = author;
             Genre = genre;
             Pages = pages;
-            PublishDate = publishDate;
+            PublishDate = publishDate; 
             Rating = rating;
             LibraryId = libraryId;
             Available = available;
             TimesLent = timesLent;
+            Description = description;
             CoverImg = coverImg;
         }
 
@@ -46,6 +47,8 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
         public Boolean Available { get; set; }
         [Column("timesLent")]
         public int TimesLent { get; set; }
+        [Column("description")]
+        public string Description { get; set; }
         [Column("coverImg")]
         public string CoverImg { get; set; }
     }

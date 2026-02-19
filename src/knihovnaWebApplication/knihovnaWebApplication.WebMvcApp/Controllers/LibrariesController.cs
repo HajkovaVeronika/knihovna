@@ -27,7 +27,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         public IActionResult BranchDetail(int id)
         {
 
-            string branchName = Libraries.First(l => l.LibraryId == id).Name;
+            string branchName = Libraries.First(l => l.LibraryId == id).Name;       //sequence contains no matching element
             List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
 
             BranchDetailModel booksBranch = new BranchDetailModel(id,branchName, books);
@@ -42,6 +42,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
         }
 
+        [HttpGet]
         public IActionResult AddBook(int branchId)
         {
             Book book = new Book();
@@ -51,24 +52,23 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddingBook(Book model) {
+        public IActionResult AddingBook(Book book)  {
 
-            Book book = model;
             book.Available = true;
             book.TimesLent = 0;
             DbContext.Books.Add(book);
-            DbContext.SaveChanges();    //hazí chybu idk
+            DbContext.SaveChanges();   
 
 
-            return RedirectToAction("BookAdded"); //todo: musí vrátit i branchId jako model
+            return RedirectToAction("BookAdded", new { branchId = book.LibraryId }); //todo: musí vrátit i branchId jako model
         }
 
-        public IActionResult BookAdded(int id)
+        public IActionResult BookAdded(int branchId)
         {
-            string branchName = Libraries.First(l => l.LibraryId == id).Name;
-            List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
+            string branchName = Libraries.First(l => l.LibraryId == branchId).Name;
+            List<Book> books = DbContext.Books.Where(b => b.LibraryId == branchId).ToList();
 
-            BranchDetailModel booksBranch = new BranchDetailModel(id, branchName, books);
+            BranchDetailModel booksBranch = new BranchDetailModel(branchId, branchName, books);
 
             return View("BranchDetail", booksBranch);
         }
