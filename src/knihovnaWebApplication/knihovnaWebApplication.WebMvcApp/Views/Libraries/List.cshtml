@@ -1,0 +1,14 @@
+﻿@model List<Library>;
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Libraries: @Model.Count</h1>
+
+@foreach(var library in Model)
+{
+    <div>
+        <h3>@library.Name</h3>
+    </div>
+}

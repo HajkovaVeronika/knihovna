@@ -10,8 +10,16 @@
         flex-direction: column;
         padding: 50px;
         background-color: #E4ECEF;
-        height: 100vh;
     }
+
+    .bookBtnContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 25px;
+        justify-self: flex-end;
+    }
+
 
     
 </style>
@@ -20,7 +28,7 @@
     <p class="topLink"> <a class="branchesLink" asp-controller="Home" asp-action="Index">Branches</a> > @Model.BranchName</p>
 
     <div class="booksContainer">
-        @foreach (Book book in @Model.BooksInBranch)
+        @foreach (Book book in @Model.BooksInBranch) 
         {
             <div class="bookContainer">
                 <img src="@book.CoverImg" alt="book cover" class="coverImgBranch"/>
@@ -28,7 +36,11 @@
                     <p class="branchBookTitle">@book.Title</p>
                     <p class="branchBookAuthor">@book.Author</p>
                 </div>
-                <a class="myA" asp-controller="Libraries" asp-action="bookDetail" asp-route-bookId="@book.BookId"><button class="myBtn">Detail</button></a>
+                <div class="bookBtnContainer">
+                    <a class="myA" asp-controller="Libraries" asp-action="deleteBook" asp-route-bookId="@book.BookId"><button class="myBtn deleteBtn">Delete</button></a>
+                    <a class="myA" asp-controller="Libraries" asp-action="bookDetail" asp-route-bookId="@book.BookId"><button class="myBtn">Detail</button></a>
+                </div>
+                
             </div>
         }
     </div>

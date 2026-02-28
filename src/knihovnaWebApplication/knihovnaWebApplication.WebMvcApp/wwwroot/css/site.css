@@ -186,8 +186,13 @@ input {
     padding-bottom: 25px;
     border-radius: 30px;
     width: 350px;
+    min-height: 582px;
     align-items: center;
     gap: 15px;
+}
+
+.detailBtn {
+   margin-tom: auto;
 }
 
 .booksContainer {
@@ -196,6 +201,7 @@ input {
     padding: 50px;
     gap: 50px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .branchBookTitle {

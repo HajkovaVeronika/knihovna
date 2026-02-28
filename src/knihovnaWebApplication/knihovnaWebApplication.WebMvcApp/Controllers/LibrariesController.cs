@@ -24,13 +24,13 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         }
 
         //[Authorize] //zabezpeèí jenom konkrétní akci
-        public IActionResult BranchDetail(int id)
+        public IActionResult BranchDetail(int libraryId)
         {
 
-            string branchName = Libraries.First(l => l.LibraryId == id).Name;       //sequence contains no matching element
-            List<Book> books = DbContext.Books.Where(b => b.LibraryId == id).ToList();
+            string branchName = Libraries.First(l => l.LibraryId == libraryId).Name;       //sequence contains no matching element
+            List<Book> books = DbContext.Books.Where(b => b.LibraryId == libraryId).ToList();
 
-            BranchDetailModel booksBranch = new BranchDetailModel(id,branchName, books);
+            BranchDetailModel booksBranch = new BranchDetailModel(libraryId,branchName, books);
 
             return View(booksBranch);
         }
@@ -42,6 +42,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult AddBook(int branchId)
         {
@@ -65,6 +66,22 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
         public IActionResult BookAdded(int branchId)
         {
+            string branchName = Libraries.First(l => l.LibraryId == branchId).Name;
+            List<Book> books = DbContext.Books.Where(b => b.LibraryId == branchId).ToList();
+
+            BranchDetailModel booksBranch = new BranchDetailModel(branchId, branchName, books);
+
+            return View("BranchDetail", booksBranch);
+        }
+
+        [Authorize]
+        public IActionResult deleteBook(int bookId)
+        {
+            Book book = Books.First(b => b.BookId == bookId);
+            int branchId = book.LibraryId;
+            DbContext.Books.Remove(book);
+            DbContext.SaveChanges();
+
             string branchName = Libraries.First(l => l.LibraryId == branchId).Name;
             List<Book> books = DbContext.Books.Where(b => b.LibraryId == branchId).ToList();
 
