@@ -30,6 +30,33 @@ body {
   text-align: start;
 }
 */
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background-color: #E4ECEF;
+  min-height: calc(100vh - 150px); 
+}
+
+.myContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  background-color: #E4ECEF;
+  margin: 0;
+  width: 100%;
+}
+
+.bookBtnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 25px;
+    justify-self: flex-end;
+}
+
 header {
     background-color: #373737;
     color: white;
@@ -86,7 +113,6 @@ body {
     flex: 1;
     margin: 0px;
     width: 100%;
-    height: 100vh;
 }
 
 .myContainer h2 {
@@ -125,6 +151,20 @@ body {
 
 .myA {
     text-decoration: none;
+}
+
+input, textarea {
+    border-radius: 20px;
+    border: solid #9FC4E6 2px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+}
+
+.addBookInput {
+    width: 225px;
 }
 
 .myBtn {
@@ -233,4 +273,40 @@ input {
 .coverImgBranch {
     width: 250px;
     border-radius: 10px;
+}
+
+.addBookContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.addBookInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.addBookInput {
+    width: 225px
+}
+
+.editBookContainer {
+    display: flex;
+    gap: 25px;
+}
+
+.descriptionInput {
+    width: 250px;
+    height: 100%;
+    resize: none;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    height: 480px;
 }

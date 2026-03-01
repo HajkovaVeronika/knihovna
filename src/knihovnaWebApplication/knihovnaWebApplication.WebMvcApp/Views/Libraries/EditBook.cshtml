@@ -4,33 +4,33 @@
     Layout = "_Layout";
 }
 
-<style>
-    .addBookDescription {
-    }
-</style>
 
 <main>
     <div class="myContainer">
         
-        <form class="addBookContainer" method="post" asp-action="AddingBook">
+        <form class="addBookContainer" method="post" asp-action="EditingBook">
             <div class="editBookContainer">
                 <div class="addBookInputs">
+                    <input asp-for="BookId" type="hidden" />
                     <input asp-for="CoverImg" type="text" placeholder="Book cover link" class="addBookInput" />
                     <input asp-for="Title" type="text" placeholder="Title" class="addBookInput" />
                     <input asp-for="Author" type="text" placeholder="Author" class="addBookInput" />
                     <input asp-for="Pages" type="number" placeholder="Number of pages" min="1" class="addBookInput" />
                     <input asp-for="PublishDate" type="date" placeholder="Publish date" class="addBookInput" />
                     <input asp-for="Genre" type="text" placeholder="Genre" class="addBookInput" />
-                    <input asp-for="LibraryId" type="hidden" /> 
-                    <input asp-for="Rating" type="number" placeholder="Rating" min="1" max="5" class="addBookInput" />
+                    <input asp-for="LibraryId" type="number" placeholder="LibraryId" class="addBookInput" />
+                    <input asp-for="Rating" type="number" step="0.25" inputmode="decimal" placeholder="Rating" min="1" max="5" class="addBookInput" />
+                    <input asp-for="TimesLent" type="number" placeholder="Times lent" min="0" class="addBookInput" />
+                    <input asp-for="Available" type="text" placeholder="Available" class="addBookInput" />
                 </div>
                 <div class="description">
                     <p>Description: </p>
-                    <textarea asp-for="Description" placeholder="Description" class="addBookInput descriptionInput addBookDescription"></textarea>
-                </div>  
+                    <textarea asp-for="Description" placeholder="Description" class="addBookInput descriptionInput"></textarea>
+                </div>
+                
             </div>
             
-            <button class="myBtn" type="submit">Add book</button>
+            <button class="myBtn" type="submit">Save changes</button>
         </form>    
     </div>
 </main>

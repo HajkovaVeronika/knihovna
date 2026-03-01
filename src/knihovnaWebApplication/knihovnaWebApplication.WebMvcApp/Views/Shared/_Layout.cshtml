@@ -17,10 +17,8 @@
         {
             <a asp-controller="Auth" asp-action="Login">Log In</a>
         } else
-        {   //můžem např. udělat logout
-            <p class="helloUser">
-                Hello, user @User.FindFirst("username").Value
-            </p>
+        {   
+            <a asp-controller="Auth" asp-action="Logout">Log out</a>
         }
         <a asp-controller="Home" asp-action="Index" class="bestLibraryHeader"><h2>Best Library s.r.o.</h2></a>
     </header>

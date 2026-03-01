@@ -27,18 +27,21 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         public IActionResult BranchDetail(int libraryId)
         {
 
-            string branchName = Libraries.First(l => l.LibraryId == libraryId).Name;       //sequence contains no matching element
+            string branchName = Libraries.First(l => l.LibraryId == libraryId).Name;
             List<Book> books = DbContext.Books.Where(b => b.LibraryId == libraryId).ToList();
 
-            BranchDetailModel booksBranch = new BranchDetailModel(libraryId,branchName, books);
+            BranchDetailModel booksBranch = new BranchDetailModel(libraryId, branchName, books);
 
             return View(booksBranch);
         }
-        [Authorize]
+
         public IActionResult BookDetail(int bookId)
         {
             Book book = Books.First(b => b.BookId == bookId);
-            return View(book);
+
+            BookDetailModel model = new BookDetailModel(book.LibraryId, Libraries.First(l => l.LibraryId == book.LibraryId).Name, book);
+
+            return View(model);
 
         }
 
@@ -53,15 +56,16 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddingBook(Book book)  {
+        public IActionResult AddingBook(Book book)
+        {
 
             book.Available = true;
             book.TimesLent = 0;
             DbContext.Books.Add(book);
-            DbContext.SaveChanges();   
+            DbContext.SaveChanges();
 
 
-            return RedirectToAction("BookAdded", new { branchId = book.LibraryId }); //todo: musí vrátit i branchId jako model
+            return RedirectToAction("BookAdded", new { branchId = book.LibraryId });
         }
 
         public IActionResult BookAdded(int branchId)
@@ -88,6 +92,33 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             BranchDetailModel booksBranch = new BranchDetailModel(branchId, branchName, books);
 
             return View("BranchDetail", booksBranch);
+        }
+
+        [Authorize]
+        public IActionResult EditBook(int bookId)
+        {
+            Book book = Books.First(b => b.BookId == bookId);
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult EditingBook(Book book)
+        {
+            Book bookToEdit = Books.First(b => b.BookId == book.BookId);
+            bookToEdit.CoverImg = book.CoverImg;
+            bookToEdit.Title = book.Title;
+            bookToEdit.Author = book.Author;
+            bookToEdit.Genre = book.Genre;
+            bookToEdit.Pages = book.Pages;
+            bookToEdit.PublishDate = book.PublishDate;
+            bookToEdit.Rating = book.Rating;
+            bookToEdit.Description = book.Description;
+            bookToEdit.Available = book.Available;
+            bookToEdit.TimesLent = book.TimesLent;
+            DbContext.SaveChanges();
+
+            BookDetailModel model = new BookDetailModel(book.LibraryId, Libraries.First(l => l.LibraryId == book.LibraryId).Name, book);
+            return View("BookDetail", model);
         }
     }
 }

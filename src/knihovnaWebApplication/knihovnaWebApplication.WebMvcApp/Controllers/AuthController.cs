@@ -59,6 +59,12 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Signup()
         {
             return View(Users);
