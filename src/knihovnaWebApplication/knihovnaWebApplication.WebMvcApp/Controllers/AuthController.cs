@@ -36,6 +36,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
 
             if (user == null)
             {
+                model.somethingWrong = true;
                 return View(model); //vrací zpátky login formuláø
             }
 
@@ -65,9 +66,38 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Signup()
+        public IActionResult Signup()
         {
-            return View(Users);
+
+            SignupModel user = new SignupModel();
+
+            return View("Signup", user);
+        }
+
+        public IActionResult SigningUp(SignupModel model)
+        {
+            if(model.Password != model.ConfirmPassword && Users.Exists(u => u.Username == model.Username))
+            {
+                model.WrongPassword = true;
+                model.ExistingUsername = true;
+                return View("signup", model);
+
+            } else if(Users.Exists(u => u.Username == model.Username))
+            {
+                model.ExistingUsername = true;
+                return View("signup", model);
+
+            } else if (model.Password != model.ConfirmPassword)
+            {
+                model.WrongPassword = true;
+                model.ExistingUsername = true;
+                return View("signup", model);
+            }
+            User user = new User(model.Username, model.Password);
+            DbContext.Users.Add(user);
+            DbContext.SaveChanges();
+
+           return RedirectToAction("Login", "Auth");
         }
     }
 }

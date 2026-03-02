@@ -26,6 +26,19 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
             CoverImg = coverImg;
         }
 
+        public Book(string title, string author, string genre, int pages, DateTime publishDate, decimal rating, int libraryId, string description, string coverImg)
+        {
+            Title = title;
+            Author = author;
+            Genre = genre;
+            Pages = pages;
+            PublishDate = publishDate;
+            Rating = rating;
+            LibraryId = libraryId;
+            Description = description;
+            CoverImg = coverImg;
+        }
+
         [Key]
         [Column("bookId")]
         public int BookId { get; set; }

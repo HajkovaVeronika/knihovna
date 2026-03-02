@@ -1,4 +1,4 @@
-﻿@model List<User>;
+﻿@model SignupModel;
 
 @{
     Layout = "_Layout";
@@ -7,12 +7,24 @@
 <div class="myContainer">
     <div class="loginContainer">
         <h3 class="loginH3">Create account</h3>
-        <div class="inputs">
-            <input type="text" name="name" value="" placeholder="username" />
-            <input type="password" name="password" value="" placeholder="password" />
-            <input type="password" name="password" value="" placeholder="confirm password" />
+        <form class="inputs" method="post" asp-action="SigningUp">
+            
+            <input type="text" asp-for="Username" placeholder="username" />
+            <input type="password" asp-for="Password" placeholder="password" />
+            <input type="password" asp-for="ConfirmPassword" value="" placeholder="confirm password" />
+            <div class="problemContainer">
+
+                @if (Model.WrongPassword) {
+                <p class="problemP">Passwords do not match</p>
+                }
+                @if (Model.ExistingUsername)
+                {
+                    <p class="problemP">This name is taken</p>
+                }
+            </div>
+            
             <button class="myBtn">Create account</button>
-        </div>
+        </form>
         <div class="createAccountContainer">
             <p>Already have an account?</p>
             <a class="myBtn" asp-controller="Auth" asp-action="Login">Login</a>

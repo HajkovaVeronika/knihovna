@@ -49,15 +49,17 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         [HttpGet]
         public IActionResult AddBook(int branchId)
         {
-            Book book = new Book();
+            AddBookModel book = new AddBookModel();
             book.LibraryId = branchId;
+            //book.LibraryName = Libraries.First(l => l.LibraryId == branchId);
 
             return View(book);
         }
 
         [HttpPost]
-        public IActionResult AddingBook(Book book)
+        public IActionResult AddingBook(AddBookModel bookModel)
         {
+            Book book = new Book(bookModel.Title, bookModel.Author, bookModel.Genre, bookModel.Pages, bookModel.PublishDate, bookModel.Rating, bookModel.LibraryId, bookModel.Description, bookModel.CoverImg);
 
             book.Available = true;
             book.TimesLent = 0;

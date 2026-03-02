@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model AddBookModel
 
 @{
     Layout = "_Layout";
@@ -11,18 +11,39 @@
 
 <main>
     <div class="myContainer">
-        
+        <p class="topLink"> <a class="branchesLink" asp-controller="Libraries" asp-action="BranchDetail" asp-route-branchId="@Model.LibraryId">@Model.LibraryName</a> > Add book</p>
         <form class="addBookContainer" method="post" asp-action="AddingBook">
             <div class="editBookContainer">
                 <div class="addBookInputs">
-                    <input asp-for="CoverImg" type="text" placeholder="Book cover link" class="addBookInput" />
-                    <input asp-for="Title" type="text" placeholder="Title" class="addBookInput" />
-                    <input asp-for="Author" type="text" placeholder="Author" class="addBookInput" />
-                    <input asp-for="Pages" type="number" placeholder="Number of pages" min="1" class="addBookInput" />
-                    <input asp-for="PublishDate" type="date" placeholder="Publish date" class="addBookInput" />
-                    <input asp-for="Genre" type="text" placeholder="Genre" class="addBookInput" />
+                    <div class="addBookLabelInput">
+                        <label for="CoverImg">Cover image link</label>
+                        <input asp-for="CoverImg" type="text" placeholder="Book cover link" class="addBookInput" />
+                    </div>
+                    <div class="addBookLabelInput">
+                        <label for="Title">Title</label>
+                        <input asp-for="Title" type="text" placeholder="Title" class="addBookInput" />
+                    </div>
+                    <div class="addBookLabelInput">
+                        <label for="Author">Author</label>
+                        <input asp-for="Author" type="text" placeholder="Author" class="addBookInput" />
+                    </div>
+                    <div class="addBookLabelInput">
+                        <label for="Pages">Pages</label>
+                        <input asp-for="Pages" type="number" placeholder="Number of pages" min="1" class="addBookInput" />
+                    </div>
+                    <div class="addBookLabelInput">
+                        <label for="PublishDate">Publish date</label>
+                        <input asp-for="PublishDate" type="date" placeholder="Publish date" class="addBookInput" />
+                    </div>
+                    <div class="addBookLabelInput">
+                        <label for="Genre">Genre</label>
+                        <input asp-for="Genre" type="text" placeholder="Genre" class="addBookInput" />
+                    </div>
                     <input asp-for="LibraryId" type="hidden" /> 
-                    <input asp-for="Rating" type="number" placeholder="Rating" min="1" max="5" class="addBookInput" />
+                    <div class="addBookLabelInput">
+                        <label for="Rating">Rating</label>
+                        <input asp-for="Rating" type="number" placeholder="Rating" min="1" max="5" class="addBookInput" />
+                    </div>
                 </div>
                 <div class="description">
                     <p>Description: </p>

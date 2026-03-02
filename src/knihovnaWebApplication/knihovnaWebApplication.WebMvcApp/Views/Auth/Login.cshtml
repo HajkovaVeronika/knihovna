@@ -12,13 +12,17 @@
             <div class="inputs">
                 <input type="text" asp-for="Username" placeholder="username" />
                 <input type="password" asp-for="Password" value="" placeholder="password" />
+                @if(Model.somethingWrong)
+                {
+                    <p class="problemP">Incorrect username or password</p>
+                }
                 <button class="myBtn">Log in</button>
             </div>
-            <!--
+            
             <div class="createAccountContainer">
                 <p>Don't have an account?</p>
                 <a class="myBtn" asp-controller="Auth" asp-action="Signup">Create account</a>
-            </div>-->
+            </div>
         </form>
 
         </div>

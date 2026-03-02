@@ -17,6 +17,12 @@ namespace knihovnaWebApplication.WebMvcApp.Entities
             Password = password;
         }
 
+        public User( string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
         [Key]
         [Column("userId")]
         public int UserId { get; set; }

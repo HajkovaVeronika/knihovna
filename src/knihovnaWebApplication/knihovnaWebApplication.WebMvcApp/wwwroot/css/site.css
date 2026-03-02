@@ -192,6 +192,16 @@ input, textarea {
     flex-direction: column;
     gap: 50px;
     align-items: center;
+    background-color: rgba(1, 120, 255, 0.12);
+    padding: 50px;
+    width: 500px;
+    align-self: center;
+    border-radius: 50px;
+    color: #00376C;
+}
+
+.loginContainer input {
+    width: 300px;
 }
 
 .inputs {
@@ -209,7 +219,20 @@ input {
 }
 
 .loginH3 {
-    transform: translateX(-118px);
+    align-self: flex-start;
+}
+
+.problemP {
+    color: red;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.problemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
 .createAccountContainer {
@@ -232,7 +255,7 @@ input {
 }
 
 .detailBtn {
-   margin-tom: auto;
+   margin-top: auto;
 }
 
 .booksContainer {
@@ -279,15 +302,25 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
+    background-color: rgba(1, 120, 255, 0.12);
+    border-radius: 50px;
+    color: #00376C;
+    padding: 50px;
 }
 
 .addBookInputs {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 10px;
+}
+
+.addBookLabelInput {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
 .addBookInput {
