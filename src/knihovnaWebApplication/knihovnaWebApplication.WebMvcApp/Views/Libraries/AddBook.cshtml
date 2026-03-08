@@ -10,8 +10,10 @@
 </style>
 
 <main>
+    <p class="topLink"> <a class="branchesLink" asp-controller="Libraries" asp-action="BranchDetail" asp-route-libraryId="@Model.LibraryId">@Model.LibraryName</a> > Add book</p>
+
     <div class="myContainer">
-        <p class="topLink"> <a class="branchesLink" asp-controller="Libraries" asp-action="BranchDetail" asp-route-branchId="@Model.LibraryId">@Model.LibraryName</a> > Add book</p>
+
         <form class="addBookContainer" method="post" asp-action="AddingBook">
             <div class="editBookContainer">
                 <div class="addBookInputs">

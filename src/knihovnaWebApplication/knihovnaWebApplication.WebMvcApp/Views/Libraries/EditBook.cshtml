@@ -6,6 +6,7 @@
 
 
 <main>
+    <p class="topLink"> <a class="branchesLink" asp-controller="Libraries" asp-action="BookDetail" asp-route-bookId="@Model.BookId">@Model.Title</a> > Edit book</p>
     <div class="myContainer">
         <form class="addBookContainer" method="post" asp-action="EditingBook">
             <div class="editBookContainer">

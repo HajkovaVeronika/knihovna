@@ -51,7 +51,7 @@ namespace knihovnaWebApplication.WebMvcApp.Controllers
         {
             AddBookModel book = new AddBookModel();
             book.LibraryId = branchId;
-            //book.LibraryName = Libraries.First(l => l.LibraryId == branchId);
+            book.LibraryName = Libraries.First(l => l.LibraryId == branchId).Name;
 
             return View(book);
         }
